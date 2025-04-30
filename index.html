@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mind Reader</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f0f8ff;
+    }
+    input[type="number"] {
+      padding: 10px;
+      font-size: 18px;
+      width: 100px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+    #loading {
+      font-size: 20px;
+      color: #888;
+      display: none;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Think of a Number (1 to 10)</h1>
+  <p>Type your number below, but don't worry... I'll read your mind!</p>
+  <input type="number" id="numberInput" min="1" max="10" placeholder="1-10">
+  <br>
+  <button onclick="readMind()">Read My Mind</button>
+
+  <div id="loading">Reading your mind...</div>
+  <div id="result"></div>
+
+  <script>
+    function readMind() {
+      const number = document.getElementById("numberInput").value;
+      const loading = document.getElementById("loading");
+      const result = document.getElementById("result");
+
+      result.innerText = "";
+      if (number >= 1 && number <= 10) {
+        loading.style.display = "block";
+
+        setTimeout(() => {
+          loading.style.display = "none";
+          result.innerText = `You're thinking of... ${number}!`;
+        }, 2500); // 2.5 seconds delay
+      } else {
+        result.innerText = "Please enter a number between 1 and 10.";
+        loading.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
